@@ -1,5 +1,56 @@
 # URC-COMMUNICATIONS
-RoverUI file - the ui for the rover to be run in the base stations
-sourceCam color - the code which is present in the jetson , which will send colour feed from the jetson to the base stations 
-testpy- this file is the recive the greyscale file from the jetson , to be ran in the base stations 
-source greyscale.py - this file send greyscale feed from the jetson to the base  (in the jetson file name is working.py)
+
+This repository contains the communication modules used for transmitting camera feeds between the **rover (Jetson)** and the **base stations**.
+
+## File Descriptions
+
+### RoverUI
+- **Purpose:** User Interface for the rover.
+- **Runs on:** Base Stations  
+- **Description:**  
+  Provides the graphical interface used by operators to view camera feeds and control the rover.
+
+---
+
+### sourceCam_color.py
+- **Purpose:** Sends color video feed.
+- **Runs on:** Jetson (Rover)  
+- **Description:**  
+  Captures color video from the rover camera and streams it to the base stations.
+
+---
+
+### testpy.py
+- **Purpose:** Receives grayscale video feed.
+- **Runs on:** Base Stations  
+- **Description:**  
+  Receives and displays the grayscale video stream sent from the rover.
+
+---
+
+### source_greyscale.py  
+*(Named `working.py` on the Jetson)*
+
+- **Purpose:** Sends grayscale video feed.
+- **Runs on:** Jetson (Rover)  
+- **Description:**  
+  Captures grayscale video from the rover camera and streams it to the base stations.
+
+---
+
+## System Overview
+
+Jetson (Rover):
+- sourceCam_color.py → Sends color stream  
+- working.py → Sends grayscale stream  
+
+Base Station:
+- RoverUI → Displays color stream  
+- testpy.py → Displays grayscale stream  
+
+---
+
+## Notes
+- Ensure rover and base station are on the same network.
+- Update IP addresses in scripts before running.
+- Run sender scripts on Jetson and receiver/UI scripts on base stations.
